@@ -55,7 +55,7 @@ public class App {
 			ISignature sig = new RSA();
 			sig.setFile("PlainTextFile.txt");
 			ITimer timer = new SignatureTimer(sig);
-			timer.setIterations(N);
+			timer.setIterations(1000);
 			timer.timeIt();
 			long timeElapsed = timer.getTime().toNanos();
 			System.out.println("RSA :");
