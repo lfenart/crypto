@@ -11,23 +11,24 @@ public abstract class AbstractKeyGenerator implements IKeyGenerator {
 	protected PrivateKey privateKey;
 	protected KeyPairGenerator keyPairGen;
 	protected KeyPair keyPair;
-	public AbstractKeyGenerator(String algorithm) throws NoSuchAlgorithmException{
+
+	public AbstractKeyGenerator(String algorithm) throws NoSuchAlgorithmException {
 		keyPairGen = KeyPairGenerator.getInstance(algorithm);
-		//keyPairGen.initialize(size);
+		// keyPairGen.initialize(size);
 	}
-	
+
 	public PrivateKey createKey() {
-		
+
 		keyPairGen.initialize(size);
 		KeyPair pair = keyPairGen.generateKeyPair();
 		privateKey = pair.getPrivate();
 		return privateKey;
-		
-		
+
 	}
-	
+
 	public void setKeySize(int size) {
 		this.size = size;
-		
+
 	}
+
 }

@@ -6,7 +6,6 @@ public class KeyGeneratorRSA extends AbstractKeyGenerator {
 
 	public KeyGeneratorRSA() throws NoSuchAlgorithmException {
 		super("RSA");
-		
 	}
 
 }
