@@ -1,5 +1,7 @@
 package fr.uha.ensisa.crypto.signature.time;
 
+import java.security.GeneralSecurityException;
+
 import fr.uha.ensisa.crypto.signature.ISignature;
 import fr.uha.ensisa.crypto.time.AbstractTimer;
 
@@ -22,8 +24,9 @@ public class SignatureTimer extends AbstractTimer {
 	@Override
 	protected void run() {
 		try {
-			this.sig.createSignature();
-		} catch (Exception e) {
+			byte[] sig = this.sig.createSignature();
+			this.sig.verifySignature(sig);
+		} catch (GeneralSecurityException e) {
 			e.printStackTrace();
 		}
 	}
