@@ -18,6 +18,7 @@ public abstract class AbstractSignature implements ISignature {
 	protected Signature sig;
 	protected KeyGeneratorRSA keyGen;
 	protected PrivateKey privateKey;
+	protected byte[] buffer;
 
 	public AbstractSignature(String algorithm) throws NoSuchAlgorithmException {
 		keyGen = new KeyGeneratorRSA();
@@ -25,18 +26,16 @@ public abstract class AbstractSignature implements ISignature {
 		privateKey = keyGen.createKey();
 		this.sig = Signature.getInstance(algorithm);
 
-	}
-
-	public byte[] createSignature()  {
-		// Update the signature to the content of the file
 		try {
 			this.sig.initSign(privateKey);
-			BufferedInputStream file = new BufferedInputStream(new FileInputStream(filePath));
+			BufferedInputStream file = new BufferedInputStream(new FileInputStream("resources/PlainTextFile.txt"));
 			byte[] buffer = new byte[1024];
-			int n ;
+			int n; 
+			
 			while (file.available() != 0) {
 				n = file.read(buffer);
-				sig.update(buffer);
+				sig.update(buffer,0,n);
+				//System.out.println("updating");
 			}
 			file.close();
 		} catch (IOException e) {
@@ -46,7 +45,13 @@ public abstract class AbstractSignature implements ISignature {
 		} catch (SignatureException e) {
 			e.printStackTrace();
 		}
-		//Save the signature
+	}
+
+	public byte[] createSignature() throws Exception   {
+		// Update the signature to the content of the file
+		
+		
+		/*//Save the signature
 		try {
 			FileOutputStream file = new FileOutputStream("SignatureRSA");
 			file.write(sig.sign());
@@ -54,14 +59,12 @@ public abstract class AbstractSignature implements ISignature {
 			return sig.sign();
 		}catch(Exception e) {
 			
-		}
+		}*/
 
-		return null;
+		return this.sig.sign();
 
 	}
 
-	public void setFile(String file) {
-		this.filePath = "resources/" + file;
-	}
+	
 
 }

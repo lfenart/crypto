@@ -12,9 +12,9 @@ public interface ISignature {
 	
 	//public void update(byte[] tampon);
 	
-	public byte[] createSignature();
+	public byte[] createSignature() throws Exception;
 	
-	public void setFile(String file);
+	//public void setFile(String file);
 	
 
 }

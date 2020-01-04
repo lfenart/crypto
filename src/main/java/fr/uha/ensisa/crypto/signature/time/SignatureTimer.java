@@ -17,7 +17,11 @@ public class SignatureTimer extends AbstractTimer {
 
 	@Override
 	protected void run() {
-		this.sig.createSignature();
+		try {
+			this.sig.createSignature();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 

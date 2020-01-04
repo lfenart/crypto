@@ -52,8 +52,9 @@ public class App {
 	
 	private static void rsa() {
 		try {
+			//System.out.println("Buffering ...");
 			ISignature sig = new RSA();
-			sig.setFile("PlainTextFile.txt");
+			//sig.setFile("PlainTextFile.txt");
 			ITimer timer = new SignatureTimer(sig);
 			timer.setIterations(1000);
 			timer.timeIt();
