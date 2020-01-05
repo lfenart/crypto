@@ -9,6 +9,9 @@ import fr.uha.ensisa.crypto.io.IOUtils;
 import fr.uha.ensisa.crypto.signature.ISignature;
 import fr.uha.ensisa.crypto.signature.RSA;
 import fr.uha.ensisa.crypto.signature.time.SignatureTimer;
+import fr.uha.ensisa.crypto.symmetric.time.SymmetricTimer;
+import fr.uha.ensisa.crypto.symmetricencryption.AES;
+import fr.uha.ensisa.crypto.symmetricencryption.ISymmetricEncryption;
 import fr.uha.ensisa.crypto.time.ITimer;
 
 /**
@@ -18,11 +21,13 @@ import fr.uha.ensisa.crypto.time.ITimer;
 public class App {
 	public static long N_HASH = 10_000_000;
 	public static long N_SIGNATURE = 1_000;
+	public static long N_SYMMETRIC = 1_000;
+
 
 	public static void main(String[] args) {
 		rsa();
 		md5();
-
+		aes();
 	}
 
 	public static void md5() {
@@ -55,6 +60,24 @@ public class App {
 			System.out.println("RSA :");
 			System.out.println("Temps total : " + timeElapsed + "ns");
 			System.out.println("Temps moyen : " + (double) timeElapsed / N_SIGNATURE + "ns");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	private static void aes() {
+		try {
+			ISymmetricEncryption se = new AES();
+			se.setInput(IOUtils.getBytes(new File("resources/PlainTextFile.txt")));
+			ITimer timer = new SymmetricTimer(se);
+			timer.setIterations(N_SYMMETRIC);
+			timer.timeIt();
+			long timeElapsed = timer.getTime().toNanos();
+			System.out.println("AES :");
+			System.out.println("Temps total : " + timeElapsed + "ns");
+			System.out.println("Temps moyen : " + (double) timeElapsed / N_SYMMETRIC + "ns");
 
 		} catch (Exception e) {
 			e.printStackTrace();
