@@ -1,8 +1,8 @@
-package fr.uha.ensisa.crypto.symmetricencryption;
+package fr.uha.ensisa.crypto.encryption;
 
 import java.security.GeneralSecurityException;
 
-public interface ISymmetricEncryption {
+public interface IEncryption {
 
 	public byte[] createSymmetricEncryption() throws GeneralSecurityException;
 
