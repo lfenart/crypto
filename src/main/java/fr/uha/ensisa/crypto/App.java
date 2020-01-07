@@ -8,6 +8,7 @@ import fr.uha.ensisa.crypto.encryption.RSAEncryption;
 import fr.uha.ensisa.crypto.encryption.time.EncryptionTimer;
 import fr.uha.ensisa.crypto.hash.IHash;
 import fr.uha.ensisa.crypto.hash.MD5;
+import fr.uha.ensisa.crypto.hash.graphics.HashFrame;
 import fr.uha.ensisa.crypto.hash.time.HashTimer;
 import fr.uha.ensisa.crypto.io.IOUtils;
 import fr.uha.ensisa.crypto.signature.ISignature;
@@ -26,10 +27,11 @@ public class App {
 	public static long N_ASYMMETRIC = 100;
 
 	public static void main(String[] args) {
-		rsa();
-		md5();
-		aes();
-		rsaencryption();
+		HashFrame.main(null);
+//		rsa();
+//		md5();
+//		aes();
+//		rsaencryption();
 	}
 
 	public static void md5() {

@@ -4,8 +4,15 @@ import java.security.NoSuchAlgorithmException;
 
 public class SHA extends AbstractHash {
 
-    public SHA() throws NoSuchAlgorithmException {
-        super("SHA");
-    }
-    
+	private final static String name = "SHA";
+
+	public SHA() throws NoSuchAlgorithmException {
+		super(name);
+	}
+
+	@Override
+	public String name() {
+		return name;
+	}
+
 }

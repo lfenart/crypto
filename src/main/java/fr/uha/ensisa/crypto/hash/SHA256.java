@@ -4,8 +4,15 @@ import java.security.NoSuchAlgorithmException;
 
 public class SHA256 extends AbstractHash {
 
-    public SHA256() throws NoSuchAlgorithmException {
-        super("SHA-256");
-    }
-    
+	private final static String name = "SHA-256";
+
+	public SHA256() throws NoSuchAlgorithmException {
+		super(name);
+	}
+
+	@Override
+	public String name() {
+		return name;
+	}
+
 }

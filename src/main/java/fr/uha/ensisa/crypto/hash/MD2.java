@@ -4,8 +4,15 @@ import java.security.NoSuchAlgorithmException;
 
 public class MD2 extends AbstractHash {
 
-    public MD2() throws NoSuchAlgorithmException {
-        super("MD2");
-    }
-    
+	private final static String name = "MD2";
+
+	public MD2() throws NoSuchAlgorithmException {
+		super(name);
+	}
+
+	@Override
+	public String name() {
+		return name;
+	}
+
 }
