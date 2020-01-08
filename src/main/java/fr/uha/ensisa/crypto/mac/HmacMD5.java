@@ -2,11 +2,11 @@ package fr.uha.ensisa.crypto.mac;
 
 import java.security.GeneralSecurityException;
 
-public class HmacSHA256 extends AbstractMAC {
+public class HmacMD5 extends AbstractMAC {
 	
-	private static final String name = "HmacSHA256";
+	private static final String name = "HmacMD5";
 
-	public HmacSHA256() throws GeneralSecurityException {
+	public HmacMD5() throws GeneralSecurityException {
 		super(name);
 	}
 	

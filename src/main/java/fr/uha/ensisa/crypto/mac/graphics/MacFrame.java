@@ -13,7 +13,12 @@ import fr.uha.ensisa.crypto.graphics.AbstractFrame;
 import fr.uha.ensisa.crypto.graphics.DropDown;
 import fr.uha.ensisa.crypto.graphics.Result;
 import fr.uha.ensisa.crypto.io.IOUtils;
+import fr.uha.ensisa.crypto.mac.HmacMD5;
+import fr.uha.ensisa.crypto.mac.HmacSHA1;
+import fr.uha.ensisa.crypto.mac.HmacSHA224;
 import fr.uha.ensisa.crypto.mac.HmacSHA256;
+import fr.uha.ensisa.crypto.mac.HmacSHA384;
+import fr.uha.ensisa.crypto.mac.HmacSHA512;
 import fr.uha.ensisa.crypto.mac.IMAC;
 import fr.uha.ensisa.crypto.mac.timer.MACTimer;
 
@@ -69,7 +74,12 @@ public class MacFrame extends AbstractFrame {
 	@Override
 	protected final void initDictionnary() throws GeneralSecurityException {
 		this.macDictionnary = new MacDictionnary();
+		this.macDictionnary.add(new HmacMD5());
+		this.macDictionnary.add(new HmacSHA1());
+		this.macDictionnary.add(new HmacSHA224());
 		this.macDictionnary.add(new HmacSHA256());
+		this.macDictionnary.add(new HmacSHA384());
+		this.macDictionnary.add(new HmacSHA512());
 	}
 
 }
