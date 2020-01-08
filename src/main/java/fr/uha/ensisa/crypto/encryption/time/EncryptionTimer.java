@@ -23,7 +23,7 @@ public class EncryptionTimer extends AbstractTimer {
 	}
 
 	protected void run() throws GeneralSecurityException {
-		this.symmetric.createSymmetricEncryption();
+		this.symmetric.createEncryption();
 	}
 
 }

@@ -6,12 +6,12 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 
-public class DES extends AbstractEncryption{
+public class DES extends AbstractSymmetricEncryption{
 
 	public DES() throws GeneralSecurityException {
         super("DES/ECB/PKCS5Padding");
     }
-	public byte[] createSymmetricEncryption() throws GeneralSecurityException {
+	public byte[] createEncryption() throws GeneralSecurityException {
 		 byte[] bytes = null;
 		 //création d'une clé DES
 		 KeyGenerator kg = KeyGenerator.getInstance("DES");

@@ -1,14 +1,14 @@
 package fr.uha.ensisa.crypto.encryption;
 
-import java.security.GeneralSecurityException;
+
+import fr.uha.ensisa.crypto.keygenerator.KeyGenerator;
+
 import java.security.NoSuchAlgorithmException;
 
 import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
 
-public abstract class AbstractEncryption implements IEncryption{
+public abstract class AbstractSymmetricEncryption implements IEncryption{
 	
 	protected Cipher chiffreur ;
 	protected Cipher dechiffreur;
@@ -20,10 +20,10 @@ public abstract class AbstractEncryption implements IEncryption{
 		
 	}
 	
-	public AbstractEncryption(String algorithm) throws NoSuchAlgorithmException, NoSuchPaddingException {
+	public AbstractSymmetricEncryption(String algorithm) throws NoSuchAlgorithmException, NoSuchPaddingException {
 		this.chiffreur = Cipher.getInstance(algorithm);
 		this.dechiffreur = Cipher.getInstance(algorithm);
-
-	}	
+		
+	}
 
 }

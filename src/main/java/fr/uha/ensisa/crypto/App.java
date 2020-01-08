@@ -21,6 +21,7 @@ import fr.uha.ensisa.crypto.signature.SHA384withRSA;
 import fr.uha.ensisa.crypto.signature.SHA512withRSA;
 import fr.uha.ensisa.crypto.signature.time.SignatureTimer;
 import fr.uha.ensisa.crypto.time.ITimer;
+import fr.uha.ensisa.crypto.encryption.RC4;
 
 /**
  * Hello world!
@@ -42,6 +43,7 @@ public class App {
 		rsa();
 		md5();
 		aes();
+		rc4();
 		des();
 		rsaencryption();
 	}
@@ -165,6 +167,24 @@ private static void sha512rsa() {
 			timer.timeIt();
 			long timeElapsed = timer.getTime().toNanos();
 			System.out.println("AES :");
+			System.out.println("Temps total : " + timeElapsed + "ns");
+			System.out.println("Temps moyen : " + (double) timeElapsed / N_SYMMETRIC + "ns");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	private static void rc4() {
+		try {
+			IEncryption se = new RC4();
+			se.setInput(IOUtils.getBytes(new File("resources/PlainTextFile.txt")));
+			ITimer timer = new EncryptionTimer(se);
+			timer.setIterations(N_SYMMETRIC);
+			timer.timeIt();
+			long timeElapsed = timer.getTime().toNanos();
+			System.out.println("RC4 :");
 			System.out.println("Temps total : " + timeElapsed + "ns");
 			System.out.println("Temps moyen : " + (double) timeElapsed / N_SYMMETRIC + "ns");
 

@@ -6,15 +6,16 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 
-
-public class AES extends AbstractSymmetricEncryption{
-	public AES() throws GeneralSecurityException {
-        super("AES");
+public class RC4 extends AbstractSymmetricEncryption{
+	public RC4() throws GeneralSecurityException {
+        super("RC4");
     }
+
+	@Override
 	public byte[] createEncryption() throws GeneralSecurityException {
 		 byte[] bytes = null;
-		 //création d'une clé AES
-		 KeyGenerator kg = KeyGenerator.getInstance("AES");
+		 //création d'une clé RC4
+		 KeyGenerator kg = KeyGenerator.getInstance("RC4");
 		 kg.init(128);
 		 SecretKey key = kg.generateKey();
 		 //chiffrage
@@ -24,6 +25,5 @@ public class AES extends AbstractSymmetricEncryption{
         this.dechiffreur.init(Cipher.DECRYPT_MODE, key);
         bytes = dechiffreur.doFinal(bytes);
         return bytes;
-   }
-
+	}
 }

@@ -9,7 +9,7 @@ import javax.crypto.SecretKey;
 import fr.uha.ensisa.crypto.keygenerator.KeyGeneratorRSA;
 
 
-public class RSAEncryption extends AbstractEncryption{
+public class RSAEncryption extends AbstractAsymmetricEncryption{
 	public RSAEncryption() throws GeneralSecurityException {
         super("RSA");
     }
@@ -17,7 +17,7 @@ public class RSAEncryption extends AbstractEncryption{
 	protected KeyGeneratorRSA keyGen;
 	protected KeyPair keyPair;
 	
-	public byte[] createSymmetricEncryption() throws GeneralSecurityException {
+	public byte[] createEncryption() throws GeneralSecurityException {
 		 byte[] bytes = null;
 		 //création d'une paire de clé RSA
 		 this.keyGen = new KeyGeneratorRSA();
