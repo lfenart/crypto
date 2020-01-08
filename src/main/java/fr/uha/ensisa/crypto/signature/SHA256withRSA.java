@@ -4,9 +4,16 @@ import java.security.NoSuchAlgorithmException;
 
 public class SHA256withRSA extends AbstractSignature {
 
-	public SHA256withRSA() throws NoSuchAlgorithmException {
-		super("SHA256withRSA", "RSA");
+	private static final String name = "SHA256withRSA";
 
+	public SHA256withRSA() throws NoSuchAlgorithmException {
+		super(name, "RSA");
+
+	}
+
+	@Override
+	public String name() {
+		return name;
 	}
 
 }

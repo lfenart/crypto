@@ -58,14 +58,6 @@ public class MacFrame extends AbstractFrame {
 		this.setVisible(true);
 	}
 
-	public static void main(String[] args) {
-		try {
-			MacFrame frame = new MacFrame();
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
-	}
-
 	@Override
 	protected AbstractDictionnary dictionnary() {
 		return this.macDictionnary;

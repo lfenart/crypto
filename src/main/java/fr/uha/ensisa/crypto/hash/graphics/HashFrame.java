@@ -59,14 +59,6 @@ public class HashFrame extends AbstractFrame {
 		this.setVisible(true);
 	}
 
-	public static void main(String[] args) {
-		try {
-			HashFrame frame = new HashFrame();
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
-	}
-
 	@Override
 	protected AbstractDictionnary dictionnary() {
 		return this.hashDictionnary;

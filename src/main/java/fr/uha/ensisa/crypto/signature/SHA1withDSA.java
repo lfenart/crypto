@@ -4,9 +4,16 @@ import java.security.NoSuchAlgorithmException;
 
 public class SHA1withDSA extends AbstractSignature {
 
-	public SHA1withDSA() throws NoSuchAlgorithmException {
-		super("SHA1withDSA", "DSA");
+	private static final String name = "SHA1withDSA";
 
+	public SHA1withDSA() throws NoSuchAlgorithmException {
+		super(name, "DSA");
+
+	}
+
+	@Override
+	public String name() {
+		return name;
 	}
 
 }
