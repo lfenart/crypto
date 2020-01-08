@@ -6,6 +6,8 @@ import java.security.NoSuchAlgorithmException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import fr.uha.ensisa.crypto.encryption.graphics.AsymmetricFrame;
+import fr.uha.ensisa.crypto.encryption.graphics.SymmetricFrame;
 import fr.uha.ensisa.crypto.hash.graphics.HashFrame;
 import fr.uha.ensisa.crypto.listener.MouseClickedListener;
 import fr.uha.ensisa.crypto.mac.graphics.MacFrame;
@@ -59,7 +61,6 @@ public class App extends JFrame {
 
 		JButton signatureButton = new JButton("Signature");
 		signatureButton.setBounds(300, 250, 200, 50);
-		this.add(signatureButton);
 		signatureButton.addMouseListener(new MouseClickedListener() {
 			
 			@Override
@@ -71,13 +72,36 @@ public class App extends JFrame {
 				}
 			}
 		});
+		this.add(signatureButton);
 
 		JButton symmetricButton = new JButton("Symmetric");
 		symmetricButton.setBounds(300, 350, 200, 50);
+		symmetricButton.addMouseListener(new MouseClickedListener(){
+		
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					new SymmetricFrame();
+				} catch (NoSuchAlgorithmException ex) {
+					ex.printStackTrace();
+				}
+			}
+		});
 		this.add(symmetricButton);
 
 		JButton asymmetricButton = new JButton("Asymmetric");
 		asymmetricButton.setBounds(300, 450, 200, 50);
+		asymmetricButton.addMouseListener(new MouseClickedListener(){
+		
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					new AsymmetricFrame();
+				} catch (NoSuchAlgorithmException ex) {
+					ex.printStackTrace();
+				}
+			}
+		});
 		this.add(asymmetricButton);
 
 		this.setVisible(true);

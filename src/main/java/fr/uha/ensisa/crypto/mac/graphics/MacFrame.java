@@ -20,7 +20,7 @@ import fr.uha.ensisa.crypto.mac.HmacSHA256;
 import fr.uha.ensisa.crypto.mac.HmacSHA384;
 import fr.uha.ensisa.crypto.mac.HmacSHA512;
 import fr.uha.ensisa.crypto.mac.IMAC;
-import fr.uha.ensisa.crypto.mac.timer.MACTimer;
+import fr.uha.ensisa.crypto.mac.time.MACTimer;
 
 public class MacFrame extends AbstractFrame {
 

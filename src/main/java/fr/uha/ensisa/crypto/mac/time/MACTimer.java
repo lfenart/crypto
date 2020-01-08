@@ -1,4 +1,4 @@
-package fr.uha.ensisa.crypto.mac.timer;
+package fr.uha.ensisa.crypto.mac.time;
 
 import java.security.GeneralSecurityException;
 

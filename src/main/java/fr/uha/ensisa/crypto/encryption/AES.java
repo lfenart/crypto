@@ -6,24 +6,32 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 
+public class AES extends AbstractSymmetricEncryption {
 
-public class AES extends AbstractEncryption{
-	public AES() throws GeneralSecurityException {
-        super("AES");
+    private static final String name = "AES";
+
+    public AES() throws GeneralSecurityException {
+        super(name);
     }
-	public byte[] createSymmetricEncryption() throws GeneralSecurityException {
-		 byte[] bytes = null;
-		 //création d'une clé AES
-		 KeyGenerator kg = KeyGenerator.getInstance("AES");
-		 kg.init(128);
-		 SecretKey key = kg.generateKey();
-		 //chiffrage
+
+    public byte[] createEncryption() throws GeneralSecurityException {
+        byte[] bytes = null;
+        // création d'une clé AES
+        KeyGenerator kg = KeyGenerator.getInstance("AES");
+        kg.init(128);
+        SecretKey key = kg.generateKey();
+        // chiffrage
         this.chiffreur.init(Cipher.ENCRYPT_MODE, key);
         bytes = chiffreur.doFinal(input);
-        //déchiffrage  
+        // déchiffrage
         this.dechiffreur.init(Cipher.DECRYPT_MODE, key);
         bytes = dechiffreur.doFinal(bytes);
         return bytes;
-   }
+    }
+
+    @Override
+    public String name() {
+        return name;
+    }
 
 }

@@ -4,8 +4,10 @@ import java.security.GeneralSecurityException;
 
 public interface IEncryption {
 
-	public byte[] createSymmetricEncryption() throws GeneralSecurityException;
+    public byte[] createEncryption() throws GeneralSecurityException;
 
     public void setInput(byte[] input);
+
+    public String name();
 
 }
