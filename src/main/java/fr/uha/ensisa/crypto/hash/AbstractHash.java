@@ -3,6 +3,13 @@ package fr.uha.ensisa.crypto.hash;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * 
+ * Wrapper around MessageDigest
+ * @author Lucas Fénart
+ *
+ */
+
 public abstract class AbstractHash implements IHash {
 
 	protected byte[] input;

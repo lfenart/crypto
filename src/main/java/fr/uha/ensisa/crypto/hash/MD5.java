@@ -2,6 +2,13 @@ package fr.uha.ensisa.crypto.hash;
 
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * 
+ * Concrete IHash to perform MD5 hash
+ * @author Lucas Fénart
+ *
+ */
+
 public class MD5 extends AbstractHash {
 
 	private final static String name = "MD5";

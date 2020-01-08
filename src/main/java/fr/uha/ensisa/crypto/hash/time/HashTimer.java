@@ -6,6 +6,13 @@ import java.security.GeneralSecurityException;
 import fr.uha.ensisa.crypto.hash.IHash;
 import fr.uha.ensisa.crypto.time.AbstractTimer;
 
+/**
+ * 
+ * @author Lucas Fenart
+ * Timer to measure Hash performances
+ *
+ */
+
 public class HashTimer extends AbstractTimer {
 
 	private IHash hash;

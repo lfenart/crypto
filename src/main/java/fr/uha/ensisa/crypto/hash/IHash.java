@@ -1,5 +1,12 @@
 package fr.uha.ensisa.crypto.hash;
 
+/**
+ * 
+ * Contract for hash objects
+ * @author Lucas Fénart
+ *
+ */
+
 public interface IHash {
 
 	public byte[] createHash();
