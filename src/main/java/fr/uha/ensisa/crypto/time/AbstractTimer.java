@@ -36,6 +36,7 @@ public abstract class AbstractTimer implements ITimer {
 			this.stop();
 			throw e;
 		}
+		this.stop();
 	}
 
 	protected abstract void run() throws GeneralSecurityException;
