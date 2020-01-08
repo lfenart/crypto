@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 public class SHA512withRSA extends AbstractSignature {
 
 	public SHA512withRSA() throws NoSuchAlgorithmException {
-		super("SHA512withRSA");
+		super("SHA512withRSA","RSA");
 
 	}
 

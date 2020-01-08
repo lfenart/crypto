@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 public class DSA extends AbstractSignature {
 
 	public DSA() throws NoSuchAlgorithmException {
-		super("SHA1withDSA");
+		super("SHA1withDSA","DSA");
 
 	}
 

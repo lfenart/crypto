@@ -16,11 +16,11 @@ public abstract class AbstractSignature implements ISignature {
 	protected KeyPair keyPair;
 	protected byte[] input;
 
-	public AbstractSignature(String algorithm) throws NoSuchAlgorithmException {
-		this.keyGen = new KeyGenerator(algorithm.substring(algorithm.length() - 3));
+	public AbstractSignature(String hashAlgorithm,String algorithm) throws NoSuchAlgorithmException {
+		this.keyGen = new KeyGenerator(algorithm);
 		this.keyGen.setKeySize(1024);
 		this.keyPair = keyGen.createKeyPair();
-		this.sig = Signature.getInstance(algorithm);
+		this.sig = Signature.getInstance(hashAlgorithm);
 	}
 
 	public void setInput(byte[] input) {

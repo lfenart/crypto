@@ -34,6 +34,7 @@ public class App {
 	
 
 	public static void main(String[] args) {
+
 		sha512rsa();
 		dsa();
 		sha384rsa();
@@ -44,6 +45,8 @@ public class App {
 		rsaencryption();
 	}
 	
+
+
 private static void sha512rsa() {
 		
 		try {
