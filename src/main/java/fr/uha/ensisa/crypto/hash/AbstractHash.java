@@ -7,6 +7,7 @@ public abstract class AbstractHash implements IHash {
 
 	protected byte[] input;
 	protected MessageDigest md;
+	protected byte[] hash;
 
 	public AbstractHash(String algorithm) throws NoSuchAlgorithmException {
 		this.md = MessageDigest.getInstance(algorithm);
@@ -18,6 +19,18 @@ public abstract class AbstractHash implements IHash {
 
 	public void setInput(byte[] input) {
 		this.input = input;
+		this.hash = this.createHash();
+	}
+
+	@Override
+	public boolean verify(byte[] bytes) {
+		if (bytes.length != this.hash.length)
+			return false;
+		for (int i = 0; i < bytes.length; i++) {
+			if (bytes[i] != this.hash[i])
+				return false;
+		}
+		return true;
 	}
 
 }

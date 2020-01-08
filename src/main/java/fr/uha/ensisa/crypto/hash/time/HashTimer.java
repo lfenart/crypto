@@ -1,5 +1,8 @@
 package fr.uha.ensisa.crypto.hash.time;
 
+import java.security.DigestException;
+import java.security.GeneralSecurityException;
+
 import fr.uha.ensisa.crypto.hash.IHash;
 import fr.uha.ensisa.crypto.time.AbstractTimer;
 
@@ -19,7 +22,10 @@ public class HashTimer extends AbstractTimer {
 		this.hash = hash;
 	}
 
-	protected void run() {
-		this.hash.createHash();
+	protected void run() throws GeneralSecurityException {
+		byte[] bytes = this.hash.createHash();
+		if (!this.hash.verify(bytes)) {
+			throw new DigestException("Verification failed");
+		}
 	}
 }
