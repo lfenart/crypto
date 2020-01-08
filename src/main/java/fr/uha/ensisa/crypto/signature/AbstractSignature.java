@@ -5,19 +5,20 @@ import java.security.KeyPair;
 import java.security.NoSuchAlgorithmException;
 import java.security.Signature;
 
+import fr.uha.ensisa.crypto.keygenerator.KeyGenerator;
 import fr.uha.ensisa.crypto.keygenerator.KeyGeneratorRSA;
 
 public abstract class AbstractSignature implements ISignature {
 
 	protected String filePath;
 	protected Signature sig;
-	protected KeyGeneratorRSA keyGen;
+	protected KeyGenerator keyGen;
 	protected KeyPair keyPair;
 	protected byte[] input;
 
 	public AbstractSignature(String algorithm) throws NoSuchAlgorithmException {
-		this.keyGen = new KeyGeneratorRSA();
-		this.keyGen.setKeySize(2048);
+		this.keyGen = new KeyGenerator(algorithm.substring(algorithm.length() - 3));
+		this.keyGen.setKeySize(1024);
 		this.keyPair = keyGen.createKeyPair();
 		this.sig = Signature.getInstance(algorithm);
 	}

@@ -13,8 +13,11 @@ import fr.uha.ensisa.crypto.io.IOUtils;
 import fr.uha.ensisa.crypto.mac.HmacSHA256;
 import fr.uha.ensisa.crypto.mac.IMAC;
 import fr.uha.ensisa.crypto.mac.timer.MACTimer;
+import fr.uha.ensisa.crypto.signature.DSA;
 import fr.uha.ensisa.crypto.signature.ISignature;
 import fr.uha.ensisa.crypto.signature.RSA;
+import fr.uha.ensisa.crypto.signature.SHA384withRSA;
+import fr.uha.ensisa.crypto.signature.SHA512withRSA;
 import fr.uha.ensisa.crypto.signature.time.SignatureTimer;
 import fr.uha.ensisa.crypto.time.ITimer;
 
@@ -31,12 +34,71 @@ public class App {
 	
 
 	public static void main(String[] args) {
+		sha512rsa();
+		dsa();
+		sha384rsa();
 		mac();
 		rsa();
 		md5();
 		aes();
 		rsaencryption();
 	}
+	
+private static void sha512rsa() {
+		
+		try {
+			ISignature sig = new SHA512withRSA();
+			sig.setInput(IOUtils.getBytes(new File("resources/PlainTextFile.txt")));
+			ITimer timer = new SignatureTimer(sig);
+			timer.setIterations(N_SIGNATURE);
+			timer.timeIt();
+			long timeElapsed = timer.getTime().toNanos();
+			System.out.println("SHA512withRSA :");
+			System.out.println("Temps total : " + timeElapsed + "ns");
+			System.out.println("Temps moyen : " + (double) timeElapsed / N_SIGNATURE + "ns");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	private static void dsa() {
+		try {
+			ISignature sig = new DSA();
+			sig.setInput(IOUtils.getBytes(new File("resources/PlainTextFile.txt")));
+			ITimer timer = new SignatureTimer(sig);
+			timer.setIterations(N_SIGNATURE);
+			timer.timeIt();
+			long timeElapsed = timer.getTime().toNanos();
+			System.out.println("DSA :");
+			System.out.println("Temps total : " + timeElapsed + "ns");
+			System.out.println("Temps moyen : " + (double) timeElapsed / N_SIGNATURE + "ns");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	private static void sha384rsa() {
+		try {
+			ISignature sig = new SHA384withRSA();
+			sig.setInput(IOUtils.getBytes(new File("resources/PlainTextFile.txt")));
+			ITimer timer = new SignatureTimer(sig);
+			timer.setIterations(N_SIGNATURE);
+			timer.timeIt();
+			long timeElapsed = timer.getTime().toNanos();
+			System.out.println("SHA384withRSA :");
+			System.out.println("Temps total : " + timeElapsed + "ns");
+			System.out.println("Temps moyen : " + (double) timeElapsed / N_SIGNATURE + "ns");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 
 	private static void mac() {
 		try {
