@@ -3,7 +3,7 @@ package fr.uha.ensisa.crypto.graphics;
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import java.security.NoSuchAlgorithmException;
+import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +33,7 @@ public abstract class AbstractFrame extends JFrame {
 		super(name);
 		try {
 			this.initDictionnary();
-		} catch (NoSuchAlgorithmException e) {
+		} catch (GeneralSecurityException e) {
 			e.printStackTrace();
 		}
 		this.dropDowns = new ArrayList<>();
@@ -58,11 +58,11 @@ public abstract class AbstractFrame extends JFrame {
 		JLabel fileLabel = new JLabel("Fichier :");
 		fileLabel.setBounds(400, 50, 100, 25);
 		this.add(fileLabel);
-		
+
 		JButton fileButton = new JButton("Ouvrir");
 		fileButton.setBounds(700, 50, 75, 25);
 		fileButton.addMouseListener(new MouseClickedListener() {
-			
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				JFileChooser fc = new JFileChooser();
@@ -152,5 +152,5 @@ public abstract class AbstractFrame extends JFrame {
 
 	protected abstract void start();
 
-	protected abstract void initDictionnary() throws NoSuchAlgorithmException;
+	protected abstract void initDictionnary() throws GeneralSecurityException;
 }

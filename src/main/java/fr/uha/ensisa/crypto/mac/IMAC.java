@@ -7,5 +7,7 @@ public interface IMAC {
 	public byte[] createMAC() throws GeneralSecurityException;
 
 	public void setInput(byte[] input);
+	
+	public String name();
 
 }

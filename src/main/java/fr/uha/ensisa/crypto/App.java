@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 
 import fr.uha.ensisa.crypto.hash.graphics.HashFrame;
 import fr.uha.ensisa.crypto.listener.MouseClickedListener;
+import fr.uha.ensisa.crypto.mac.graphics.MacFrame;
 
 /**
  * Hello world!
@@ -42,6 +43,17 @@ public class App extends JFrame {
 
 		JButton macButton = new JButton("MAC");
 		macButton.setBounds(300, 150, 200, 50);
+		macButton.addMouseListener(new MouseClickedListener() {
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					new MacFrame();
+				} catch (NoSuchAlgorithmException ex) {
+					ex.printStackTrace();
+				}
+			}
+		});
 		this.add(macButton);
 
 		JButton signatureButton = new JButton("Signature");
