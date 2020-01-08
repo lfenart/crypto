@@ -41,7 +41,7 @@ public class App {
 	private static void mac() {
 		try {
 			IMAC mac = new HmacSHA256();
-			mac.setMessage("HELLO WORLD !");
+			mac.setInput("HELLO WORLD !".getBytes("UTF-8"));
 			ITimer timer = new MACTimer(mac);
 			timer.setIterations(N_MAC);
 			timer.timeIt();

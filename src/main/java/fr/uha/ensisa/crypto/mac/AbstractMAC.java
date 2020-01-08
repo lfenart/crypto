@@ -1,5 +1,6 @@
 package fr.uha.ensisa.crypto.mac;
 
+import java.security.GeneralSecurityException;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
@@ -13,7 +14,7 @@ public abstract class AbstractMAC implements IMAC {
 	
 	
 	protected String message;
-	protected byte[] bytes;
+	protected byte[] input;
 	protected KeyGenerator keyGen;
 	protected SecureRandom secRand;
 	protected Key key;
@@ -31,19 +32,13 @@ public abstract class AbstractMAC implements IMAC {
 
 	
 
-	public byte[] createMAC()  {
-		try {
-			this.mac.init(this.key);
-		} catch (InvalidKeyException e) {
-			
-			e.printStackTrace();
-		}
-		this.bytes = message.getBytes();
-		return this.mac.doFinal(bytes);
+	public byte[] createMAC() throws GeneralSecurityException {
+		this.mac.init(this.key);
+		return this.mac.doFinal(this.input);
 	}
 	
-	public void setMessage(String message) {
-		this.message = message;
+	public void setInput(byte[] input) {
+		this.input = input;
 		
 	}
 	
