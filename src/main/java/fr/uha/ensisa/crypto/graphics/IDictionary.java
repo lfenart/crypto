@@ -11,6 +11,10 @@ import java.util.Set;
 
 public interface IDictionary {
 
+	/**
+	 * Get the keys of the dictionary
+	 * @return a set of the keys
+	 */
 	public Set<String> keySet();
 
 }
