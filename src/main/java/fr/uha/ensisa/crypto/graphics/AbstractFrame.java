@@ -2,12 +2,14 @@ package fr.uha.ensisa.crypto.graphics;
 
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
@@ -50,15 +52,31 @@ public abstract class AbstractFrame extends JFrame {
 		});
 
 		this.file = new JTextField();
-		this.file.setBounds(500, 50, 200, 25);
+		this.file.setBounds(500, 50, 175, 25);
 		this.add(this.file);
 
 		JLabel fileLabel = new JLabel("Fichier :");
 		fileLabel.setBounds(400, 50, 100, 25);
 		this.add(fileLabel);
+		
+		JButton fileButton = new JButton("Ouvrir");
+		fileButton.setBounds(700, 50, 75, 25);
+		fileButton.addMouseListener(new MouseClickedListener() {
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JFileChooser fc = new JFileChooser();
+				int returnVal = fc.showOpenDialog(null);
+				if (returnVal == JFileChooser.APPROVE_OPTION) {
+					File f = fc.getSelectedFile();
+					file.setText(f.getAbsolutePath());
+				}
+			}
+		});
+		this.add(fileButton);
 
 		this.iterations = new JSpinner(new SpinnerNumberModel(1000, 1, Integer.MAX_VALUE, 1));
-		this.iterations.setBounds(500, 100, 200, 25);
+		this.iterations.setBounds(500, 100, 175, 25);
 		this.add(this.iterations);
 
 		JLabel iterationLabel = new JLabel("Iterations :");
