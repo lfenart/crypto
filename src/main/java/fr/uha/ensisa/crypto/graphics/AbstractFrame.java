@@ -2,12 +2,17 @@ package fr.uha.ensisa.crypto.graphics;
 
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 
 import fr.uha.ensisa.crypto.listener.MouseClickedListener;
 
@@ -20,12 +25,59 @@ public abstract class AbstractFrame extends JFrame {
 	protected List<DropDown<String>> dropDowns;
 	protected JButton addButton;
 	protected JTextField file;
+	protected JSpinner iterations;
 
 	public AbstractFrame(String name) {
 		super(name);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		try {
+			this.initDictionnary();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		this.dropDowns = new ArrayList<>();
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setSize(new Dimension(800, 600));
 		this.setLayout(null);
+
+		this.addButton = new JButton("+");
+		this.add(this.addButton);
+		this.addButton.addMouseListener(new MouseClickedListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				addDropDown();
+			}
+		});
+
+		this.file = new JTextField();
+		this.file.setBounds(500, 50, 200, 25);
+		this.add(this.file);
+
+		JLabel fileLabel = new JLabel("Fichier :");
+		fileLabel.setBounds(400, 50, 100, 25);
+		this.add(fileLabel);
+
+		this.iterations = new JSpinner(new SpinnerNumberModel(1000, 1, Integer.MAX_VALUE, 1));
+		this.iterations.setBounds(500, 100, 200, 25);
+		this.add(this.iterations);
+
+		JLabel iterationLabel = new JLabel("Iterations :");
+		iterationLabel.setBounds(400, 100, 100, 25);
+		this.add(iterationLabel);
+
+		JButton startButton = new JButton("Démarrer");
+		startButton.setBounds(450, 300, 200, 50);
+		startButton.addMouseListener(new MouseClickedListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				start();
+			}
+		});
+		this.add(startButton);
+
+		this.addDropDown();
+		this.setVisible(true);
 	}
 
 	protected void addDropDown() {
@@ -79,4 +131,8 @@ public abstract class AbstractFrame extends JFrame {
 	}
 
 	protected abstract AbstractDictionnary dictionnary();
+
+	protected abstract void start();
+
+	protected abstract void initDictionnary() throws NoSuchAlgorithmException;
 }
