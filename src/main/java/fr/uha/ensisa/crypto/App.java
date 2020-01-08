@@ -3,6 +3,7 @@ package fr.uha.ensisa.crypto;
 import java.io.File;
 
 import fr.uha.ensisa.crypto.encryption.AES;
+import fr.uha.ensisa.crypto.encryption.DES;
 import fr.uha.ensisa.crypto.encryption.IEncryption;
 import fr.uha.ensisa.crypto.encryption.RSAEncryption;
 import fr.uha.ensisa.crypto.encryption.time.EncryptionTimer;
@@ -41,6 +42,7 @@ public class App {
 		rsa();
 		md5();
 		aes();
+		des();
 		rsaencryption();
 	}
 	
@@ -163,6 +165,24 @@ private static void sha512rsa() {
 			timer.timeIt();
 			long timeElapsed = timer.getTime().toNanos();
 			System.out.println("AES :");
+			System.out.println("Temps total : " + timeElapsed + "ns");
+			System.out.println("Temps moyen : " + (double) timeElapsed / N_SYMMETRIC + "ns");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	private static void des() {
+		try {
+			IEncryption se = new DES();
+			se.setInput(IOUtils.getBytes(new File("resources/PlainTextFile.txt")));
+			ITimer timer = new EncryptionTimer(se);
+			timer.setIterations(N_SYMMETRIC);
+			timer.timeIt();
+			long timeElapsed = timer.getTime().toNanos();
+			System.out.println("DES :");
 			System.out.println("Temps total : " + timeElapsed + "ns");
 			System.out.println("Temps moyen : " + (double) timeElapsed / N_SYMMETRIC + "ns");
 
