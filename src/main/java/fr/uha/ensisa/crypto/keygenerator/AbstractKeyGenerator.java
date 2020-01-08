@@ -4,6 +4,7 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
+import java.security.SecureRandom;
 
 public abstract class AbstractKeyGenerator implements IKeyGenerator {
 
@@ -25,5 +26,8 @@ public abstract class AbstractKeyGenerator implements IKeyGenerator {
 		this.size = size;
 
 	}
+	
+	
+	
 
 }

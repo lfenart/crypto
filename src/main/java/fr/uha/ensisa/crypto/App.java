@@ -10,6 +10,9 @@ import fr.uha.ensisa.crypto.hash.IHash;
 import fr.uha.ensisa.crypto.hash.MD5;
 import fr.uha.ensisa.crypto.hash.time.HashTimer;
 import fr.uha.ensisa.crypto.io.IOUtils;
+import fr.uha.ensisa.crypto.mac.HmacSHA256;
+import fr.uha.ensisa.crypto.mac.IMAC;
+import fr.uha.ensisa.crypto.mac.timer.MACTimer;
 import fr.uha.ensisa.crypto.signature.ISignature;
 import fr.uha.ensisa.crypto.signature.RSA;
 import fr.uha.ensisa.crypto.signature.time.SignatureTimer;
@@ -21,15 +24,35 @@ import fr.uha.ensisa.crypto.time.ITimer;
  */
 public class App {
 	public static long N_HASH = 10_000_000;
+	public static long N_MAC = 10_000;
 	public static long N_SIGNATURE = 1_000;
 	public static long N_SYMMETRIC = 1_000;
 	public static long N_ASYMMETRIC = 100;
+	
 
 	public static void main(String[] args) {
+		mac();
 		rsa();
 		md5();
 		aes();
 		rsaencryption();
+	}
+
+	private static void mac() {
+		try {
+			IMAC mac = new HmacSHA256();
+			mac.setMessage("HELLO WORLD !");
+			ITimer timer = new MACTimer(mac);
+			timer.setIterations(N_MAC);
+			timer.timeIt();
+			long timeElapsed = timer.getTime().toNanos();
+			System.out.println("MAC :");
+			System.out.println("Temps total : " + timeElapsed + "ns");
+			System.out.println("Temps moyen : " + (double) timeElapsed / N_MAC + "ns");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void md5() {
