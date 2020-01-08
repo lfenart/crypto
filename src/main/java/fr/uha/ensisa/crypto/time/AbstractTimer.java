@@ -26,16 +26,16 @@ public abstract class AbstractTimer implements ITimer {
 		this.iterations = n;
 	}
 
-	public void timeIt() {
+	public void timeIt() throws GeneralSecurityException {
 		this.start();
 		try {
 			for (int i = 0; i < this.iterations; i++) {
 				this.run();
 			}
 		} catch (GeneralSecurityException e) {
-			e.printStackTrace();
+			this.stop();
+			throw e;
 		}
-		this.stop();
 	}
 
 	protected abstract void run() throws GeneralSecurityException;

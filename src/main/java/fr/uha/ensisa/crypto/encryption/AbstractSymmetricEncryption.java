@@ -1,7 +1,5 @@
 package fr.uha.ensisa.crypto.encryption;
 
-import fr.uha.ensisa.crypto.keygenerator.KeyGenerator;
-
 import java.security.NoSuchAlgorithmException;
 
 import javax.crypto.Cipher;

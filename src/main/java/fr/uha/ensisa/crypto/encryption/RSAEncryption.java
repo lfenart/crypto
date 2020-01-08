@@ -4,7 +4,6 @@ import java.security.GeneralSecurityException;
 import java.security.KeyPair;
 
 import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
 
 import fr.uha.ensisa.crypto.keygenerator.KeyGeneratorRSA;
 

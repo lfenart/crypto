@@ -1,5 +1,6 @@
 package fr.uha.ensisa.crypto.time;
 
+import java.security.GeneralSecurityException;
 import java.time.Duration;
 
 public interface ITimer {
@@ -8,5 +9,5 @@ public interface ITimer {
 	
 	public void setIterations(long n);
 	
-	public void timeIt();
+	public void timeIt() throws GeneralSecurityException;
 }

@@ -2,11 +2,12 @@ package fr.uha.ensisa.crypto.encryption.graphics;
 
 import java.awt.Graphics;
 import java.io.File;
-import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JOptionPane;
 
 import fr.uha.ensisa.crypto.graphics.IDictionary;
 import fr.uha.ensisa.crypto.graphics.AbstractFrame;
@@ -43,9 +44,8 @@ public class SymmetricFrame extends AbstractFrame {
 				results.add(new Result(encryption, timer.getTime().toNanos()));
 			}
 			new SymmetricResultFrame(results.toArray(new Result[] {}), iterations);
-		} catch (IOException e) {
-			// TODO: No file found
-			e.printStackTrace();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.toString());
 		}
 	}
 

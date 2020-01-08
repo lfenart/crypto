@@ -2,11 +2,12 @@ package fr.uha.ensisa.crypto.hash.graphics;
 
 import java.awt.Graphics;
 import java.io.File;
-import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JOptionPane;
 
 import fr.uha.ensisa.crypto.graphics.AbstractFrame;
 import fr.uha.ensisa.crypto.graphics.DropDown;
@@ -47,9 +48,8 @@ public class HashFrame extends AbstractFrame {
 				results.add(new Result(hash, timer.getTime().toNanos()));
 			}
 			new HashResultFrame(results.toArray(new Result[] {}), iterations);
-		} catch (IOException e) {
-			// TODO: No file found
-			e.printStackTrace();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.toString());
 		}
 	}
 
