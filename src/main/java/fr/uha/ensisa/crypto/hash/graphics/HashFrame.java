@@ -26,7 +26,7 @@ import fr.uha.ensisa.crypto.io.IOUtils;
 
 public class HashFrame extends AbstractFrame {
 
-	private HashDictionnary hashDictionnary;
+	private HashDictionary hashDictionary;
 
 	public HashFrame() throws NoSuchAlgorithmException {
 		super("Hash");
@@ -40,7 +40,7 @@ public class HashFrame extends AbstractFrame {
 			List<Result> results = new ArrayList<>();
 			long iterations = ((Integer) this.iterations.getValue()).longValue();
 			for (DropDown<String> d : this.dropDowns) {
-				IHash hash = this.hashDictionnary.get((String) d.getComboBox().getSelectedItem());
+				IHash hash = this.hashDictionary.get((String) d.getComboBox().getSelectedItem());
 				hash.setInput(bytes);
 				HashTimer timer = new HashTimer(hash);
 				timer.setIterations(iterations);
@@ -61,19 +61,19 @@ public class HashFrame extends AbstractFrame {
 
 	@Override
 	protected IDictionary dictionnary() {
-		return this.hashDictionnary;
+		return this.hashDictionary;
 	}
 
 	@Override
-	protected final void initDictionnary() throws GeneralSecurityException {
-		this.hashDictionnary = new HashDictionnary();
-		this.hashDictionnary.add(new MD2());
-		this.hashDictionnary.add(new MD5());
-		this.hashDictionnary.add(new SHA());
-		this.hashDictionnary.add(new SHA224());
-		this.hashDictionnary.add(new SHA256());
-		this.hashDictionnary.add(new SHA384());
-		this.hashDictionnary.add(new SHA512());
+	protected final void initDictionary() throws GeneralSecurityException {
+		this.hashDictionary = new HashDictionary();
+		this.hashDictionary.add(new MD2());
+		this.hashDictionary.add(new MD5());
+		this.hashDictionary.add(new SHA());
+		this.hashDictionary.add(new SHA224());
+		this.hashDictionary.add(new SHA256());
+		this.hashDictionary.add(new SHA384());
+		this.hashDictionary.add(new SHA512());
 	}
 
 }

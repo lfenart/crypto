@@ -7,10 +7,10 @@ import java.util.Set;
 import fr.uha.ensisa.crypto.graphics.IDictionary;
 import fr.uha.ensisa.crypto.mac.IMAC;
 
-public class MacDictionnary implements IDictionary {
+public class MacDictionary implements IDictionary {
 	private Map<String, IMAC> macs;
 
-	public MacDictionnary() {
+	public MacDictionary() {
 		this.macs = new HashMap<String, IMAC>();
 	}
 

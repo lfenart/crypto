@@ -25,7 +25,7 @@ import fr.uha.ensisa.crypto.mac.time.MACTimer;
 
 public class MacFrame extends AbstractFrame {
 
-	private MacDictionnary macDictionnary;
+	private MacDictionary macDictionary;
 
 	public MacFrame() throws NoSuchAlgorithmException {
 		super("MAC");
@@ -39,7 +39,7 @@ public class MacFrame extends AbstractFrame {
 			List<Result> results = new ArrayList<>();
 			long iterations = ((Integer) this.iterations.getValue()).longValue();
 			for (DropDown<String> d : this.dropDowns) {
-				IMAC mac = this.macDictionnary.get((String) d.getComboBox().getSelectedItem());
+				IMAC mac = this.macDictionary.get((String) d.getComboBox().getSelectedItem());
 				mac.setInput(bytes);
 				MACTimer timer = new MACTimer(mac);
 				timer.setIterations(iterations);
@@ -60,18 +60,18 @@ public class MacFrame extends AbstractFrame {
 
 	@Override
 	protected IDictionary dictionnary() {
-		return this.macDictionnary;
+		return this.macDictionary;
 	}
 
 	@Override
-	protected final void initDictionnary() throws GeneralSecurityException {
-		this.macDictionnary = new MacDictionnary();
-		this.macDictionnary.add(new HmacMD5());
-		this.macDictionnary.add(new HmacSHA1());
-		this.macDictionnary.add(new HmacSHA224());
-		this.macDictionnary.add(new HmacSHA256());
-		this.macDictionnary.add(new HmacSHA384());
-		this.macDictionnary.add(new HmacSHA512());
+	protected final void initDictionary() throws GeneralSecurityException {
+		this.macDictionary = new MacDictionary();
+		this.macDictionary.add(new HmacMD5());
+		this.macDictionary.add(new HmacSHA1());
+		this.macDictionary.add(new HmacSHA224());
+		this.macDictionary.add(new HmacSHA256());
+		this.macDictionary.add(new HmacSHA384());
+		this.macDictionary.add(new HmacSHA512());
 	}
 
 }

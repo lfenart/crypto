@@ -23,7 +23,7 @@ import fr.uha.ensisa.crypto.signature.time.SignatureTimer;
 
 public class SignatureFrame extends AbstractFrame {
 
-	private SignatureDictionnary signatureDictionnary;
+	private SignatureDictionary signatureDictionary;
 
 	public SignatureFrame() throws NoSuchAlgorithmException {
 		super("Signature");
@@ -37,7 +37,7 @@ public class SignatureFrame extends AbstractFrame {
 			List<Result> results = new ArrayList<>();
 			long iterations = ((Integer) this.iterations.getValue()).longValue();
 			for (DropDown<String> d : this.dropDowns) {
-				ISignature signature = this.signatureDictionnary.get((String) d.getComboBox().getSelectedItem());
+				ISignature signature = this.signatureDictionary.get((String) d.getComboBox().getSelectedItem());
 				signature.setInput(bytes);
 				SignatureTimer timer = new SignatureTimer(signature);
 				timer.setIterations(iterations);
@@ -58,16 +58,16 @@ public class SignatureFrame extends AbstractFrame {
 
 	@Override
 	protected IDictionary dictionnary() {
-		return this.signatureDictionnary;
+		return this.signatureDictionary;
 	}
 
 	@Override
-	protected final void initDictionnary() throws GeneralSecurityException {
-		this.signatureDictionnary = new SignatureDictionnary();
-		this.signatureDictionnary.add(new SHA1withDSA());
-		this.signatureDictionnary.add(new SHA256withRSA());
-		this.signatureDictionnary.add(new SHA384withRSA());
-		this.signatureDictionnary.add(new SHA512withRSA());
+	protected final void initDictionary() throws GeneralSecurityException {
+		this.signatureDictionary = new SignatureDictionary();
+		this.signatureDictionary.add(new SHA1withDSA());
+		this.signatureDictionary.add(new SHA256withRSA());
+		this.signatureDictionary.add(new SHA384withRSA());
+		this.signatureDictionary.add(new SHA512withRSA());
 	}
 
 }

@@ -7,10 +7,10 @@ import java.util.Set;
 import fr.uha.ensisa.crypto.graphics.IDictionary;
 import fr.uha.ensisa.crypto.hash.IHash;
 
-public class HashDictionnary implements IDictionary {
+public class HashDictionary implements IDictionary {
 	private Map<String, IHash> hashs;
 
-	public HashDictionnary() {
+	public HashDictionary() {
 		this.hashs = new HashMap<String, IHash>();
 	}
 

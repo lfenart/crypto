@@ -32,7 +32,7 @@ public abstract class AbstractFrame extends JFrame {
 	public AbstractFrame(String name) {
 		super(name);
 		try {
-			this.initDictionnary();
+			this.initDictionary();
 		} catch (GeneralSecurityException e) {
 			e.printStackTrace();
 		}
@@ -152,5 +152,5 @@ public abstract class AbstractFrame extends JFrame {
 
 	protected abstract void start();
 
-	protected abstract void initDictionnary() throws GeneralSecurityException;
+	protected abstract void initDictionary() throws GeneralSecurityException;
 }

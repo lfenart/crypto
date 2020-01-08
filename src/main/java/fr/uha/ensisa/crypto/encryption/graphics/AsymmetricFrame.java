@@ -20,7 +20,7 @@ import fr.uha.ensisa.crypto.encryption.time.EncryptionTimer;
 
 public class AsymmetricFrame extends AbstractFrame {
 
-	private EncryptionDictionnary encryptionDictionnary;
+	private EncryptionDictionary encryptionDictionary;
 
 	public AsymmetricFrame() throws NoSuchAlgorithmException {
 		super("Asymmetric");
@@ -34,7 +34,7 @@ public class AsymmetricFrame extends AbstractFrame {
 			List<Result> results = new ArrayList<>();
 			long iterations = ((Integer) this.iterations.getValue()).longValue();
 			for (DropDown<String> d : this.dropDowns) {
-				IEncryption encryption = this.encryptionDictionnary.get((String) d.getComboBox().getSelectedItem());
+				IEncryption encryption = this.encryptionDictionary.get((String) d.getComboBox().getSelectedItem());
 				encryption.setInput(bytes);
 				EncryptionTimer timer = new EncryptionTimer(encryption);
 				timer.setIterations(iterations);
@@ -55,13 +55,13 @@ public class AsymmetricFrame extends AbstractFrame {
 
 	@Override
 	protected IDictionary dictionnary() {
-		return this.encryptionDictionnary;
+		return this.encryptionDictionary;
 	}
 
 	@Override
-	protected final void initDictionnary() throws GeneralSecurityException {
-		this.encryptionDictionnary = new EncryptionDictionnary();
-		this.encryptionDictionnary.add(new RSAEncryption());
+	protected final void initDictionary() throws GeneralSecurityException {
+		this.encryptionDictionary = new EncryptionDictionary();
+		this.encryptionDictionary.add(new RSAEncryption());
 	}
 
 }

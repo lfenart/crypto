@@ -22,7 +22,7 @@ import fr.uha.ensisa.crypto.encryption.time.EncryptionTimer;
 
 public class SymmetricFrame extends AbstractFrame {
 
-	private EncryptionDictionnary encryptionDictionnary;
+	private EncryptionDictionary encryptionDictionary;
 
 	public SymmetricFrame() throws NoSuchAlgorithmException {
 		super("Symmetric");
@@ -36,7 +36,7 @@ public class SymmetricFrame extends AbstractFrame {
 			List<Result> results = new ArrayList<>();
 			long iterations = ((Integer) this.iterations.getValue()).longValue();
 			for (DropDown<String> d : this.dropDowns) {
-				IEncryption encryption = this.encryptionDictionnary.get((String) d.getComboBox().getSelectedItem());
+				IEncryption encryption = this.encryptionDictionary.get((String) d.getComboBox().getSelectedItem());
 				encryption.setInput(bytes);
 				EncryptionTimer timer = new EncryptionTimer(encryption);
 				timer.setIterations(iterations);
@@ -57,16 +57,16 @@ public class SymmetricFrame extends AbstractFrame {
 
 	@Override
 	protected IDictionary dictionnary() {
-		return this.encryptionDictionnary;
+		return this.encryptionDictionary;
 	}
 
 	@Override
-	protected final void initDictionnary() throws GeneralSecurityException {
-		this.encryptionDictionnary = new EncryptionDictionnary();
-		this.encryptionDictionnary.add(new AES());
-		this.encryptionDictionnary.add(new DES());
-		this.encryptionDictionnary.add(new RC4());
-		// this.encryptionDictionnary.add(new RC5());
+	protected final void initDictionary() throws GeneralSecurityException {
+		this.encryptionDictionary = new EncryptionDictionary();
+		this.encryptionDictionary.add(new AES());
+		this.encryptionDictionary.add(new DES());
+		this.encryptionDictionary.add(new RC4());
+		// this.encryptionDictionary.add(new RC5());
 	}
 
 }
