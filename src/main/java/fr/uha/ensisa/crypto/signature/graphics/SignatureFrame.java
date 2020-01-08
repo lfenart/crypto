@@ -8,7 +8,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.uha.ensisa.crypto.graphics.AbstractDictionnary;
+import fr.uha.ensisa.crypto.graphics.IDictionary;
 import fr.uha.ensisa.crypto.graphics.AbstractFrame;
 import fr.uha.ensisa.crypto.graphics.DropDown;
 import fr.uha.ensisa.crypto.graphics.Result;
@@ -57,7 +57,7 @@ public class SignatureFrame extends AbstractFrame {
 	}
 
 	@Override
-	protected AbstractDictionnary dictionnary() {
+	protected IDictionary dictionnary() {
 		return this.signatureDictionnary;
 	}
 

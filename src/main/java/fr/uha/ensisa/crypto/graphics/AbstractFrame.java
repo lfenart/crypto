@@ -148,7 +148,7 @@ public abstract class AbstractFrame extends JFrame {
 		this.repaint();
 	}
 
-	protected abstract AbstractDictionnary dictionnary();
+	protected abstract IDictionary dictionnary();
 
 	protected abstract void start();
 

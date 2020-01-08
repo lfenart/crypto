@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import fr.uha.ensisa.crypto.graphics.AbstractDictionnary;
+import fr.uha.ensisa.crypto.graphics.IDictionary;
 import fr.uha.ensisa.crypto.mac.IMAC;
 
-public class MacDictionnary extends AbstractDictionnary {
+public class MacDictionnary implements IDictionary {
 	private Map<String, IMAC> macs;
 
 	public MacDictionnary() {
@@ -18,6 +18,7 @@ public class MacDictionnary extends AbstractDictionnary {
 		this.macs.put(mac.name(), mac);
 	}
 
+	@Override
 	public Set<String> keySet() {
 		return this.macs.keySet();
 	}
