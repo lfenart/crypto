@@ -4,17 +4,17 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  * 
- * Concrete IHash to perform SHA384 hash
+ * Concrete IHash to perform SHA3-224 hash
  * 
  * @author Lucas Fénart
  *
  */
 
-public class SHA384 extends AbstractHash {
+public class SHA3224 extends AbstractHash {
 
-	private final static String name = "SHA-384";
+	private final static String name = "SHA3-224";
 
-	public SHA384() throws NoSuchAlgorithmException {
+	public SHA3224() throws NoSuchAlgorithmException {
 		super(name);
 	}
 

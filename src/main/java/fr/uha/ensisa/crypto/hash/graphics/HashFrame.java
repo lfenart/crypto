@@ -19,6 +19,10 @@ import fr.uha.ensisa.crypto.hash.MD5;
 import fr.uha.ensisa.crypto.hash.SHA;
 import fr.uha.ensisa.crypto.hash.SHA224;
 import fr.uha.ensisa.crypto.hash.SHA256;
+import fr.uha.ensisa.crypto.hash.SHA3224;
+import fr.uha.ensisa.crypto.hash.SHA3256;
+import fr.uha.ensisa.crypto.hash.SHA3384;
+import fr.uha.ensisa.crypto.hash.SHA3512;
 import fr.uha.ensisa.crypto.hash.SHA384;
 import fr.uha.ensisa.crypto.hash.SHA512;
 import fr.uha.ensisa.crypto.hash.time.HashTimer;
@@ -74,6 +78,10 @@ public class HashFrame extends AbstractFrame {
 		this.hashDictionary.add(new SHA256());
 		this.hashDictionary.add(new SHA384());
 		this.hashDictionary.add(new SHA512());
+		this.hashDictionary.add(new SHA3224());
+		this.hashDictionary.add(new SHA3256());
+		this.hashDictionary.add(new SHA3384());
+		this.hashDictionary.add(new SHA3512());
 	}
 
 }

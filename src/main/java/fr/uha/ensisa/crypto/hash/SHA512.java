@@ -2,10 +2,10 @@ package fr.uha.ensisa.crypto.hash;
 
 import java.security.NoSuchAlgorithmException;
 
-
 /**
  * 
  * Concrete IHash to perform SHA512 hash
+ * 
  * @author Lucas Fénart
  *
  */

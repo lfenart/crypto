@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  * 
  * Concrete IHash to perform MD2 hash
+ * 
  * @author Lucas Fénart
  *
  */
