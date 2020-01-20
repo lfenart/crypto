@@ -7,7 +7,7 @@ public class HmacSHA1 extends AbstractMAC {
 	private static final String name = "HmacSHA1";
 
 	public HmacSHA1() throws GeneralSecurityException {
-		super("HmacSHA1");
+		super(name);
 	}
 	
 	@Override

@@ -16,7 +16,7 @@ public abstract class AbstractMAC implements IMAC {
 	protected Mac mac;
 
 	public AbstractMAC(String algorithm) throws GeneralSecurityException {
-		this.keyGen = KeyGenerator.getInstance("DES");
+		this.keyGen = KeyGenerator.getInstance(algorithm);
 		this.secRand = new SecureRandom();
 		this.keyGen.init(this.secRand);
 		this.key = this.keyGen.generateKey();
