@@ -6,12 +6,12 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 
-public class AES extends AbstractSymmetricEncryption {
+public class DES_ECB_PKCS5Padding extends AbstractSymmetricEncryption {
 
-    private static final String name = "AES";
+    private static final String name = "DES/ECB/PKCS5Padding";
 
-    public AES() throws GeneralSecurityException {
-        super(name);
+    public DES_ECB_PKCS5Padding() throws GeneralSecurityException {
+        super("DES", name);
     }
 
     @Override

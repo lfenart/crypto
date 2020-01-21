@@ -15,9 +15,13 @@ import fr.uha.ensisa.crypto.graphics.DropDown;
 import fr.uha.ensisa.crypto.graphics.Result;
 import fr.uha.ensisa.crypto.io.IOUtils;
 import fr.uha.ensisa.crypto.encryption.AES;
-import fr.uha.ensisa.crypto.encryption.DES;
+import fr.uha.ensisa.crypto.encryption.AES_CBC_PKCS5PADDING;
+import fr.uha.ensisa.crypto.encryption.AES_CFB8_NoPadding;
+import fr.uha.ensisa.crypto.encryption.DES_ECB_PKCS5Padding;
+import fr.uha.ensisa.crypto.encryption.DESede_CBC_ISO10126Padding;
 import fr.uha.ensisa.crypto.encryption.IEncryption;
 import fr.uha.ensisa.crypto.encryption.RC4;
+import fr.uha.ensisa.crypto.encryption.RC5_CFB_PKCS5Padding;
 import fr.uha.ensisa.crypto.encryption.time.EncryptionTimer;
 
 public class SymmetricFrame extends AbstractFrame {
@@ -64,9 +68,12 @@ public class SymmetricFrame extends AbstractFrame {
 	protected final void initDictionary() throws GeneralSecurityException {
 		this.encryptionDictionary = new EncryptionDictionary();
 		this.encryptionDictionary.add(new AES());
-		this.encryptionDictionary.add(new DES());
+		this.encryptionDictionary.add(new AES_CBC_PKCS5PADDING());
+		this.encryptionDictionary.add(new AES_CFB8_NoPadding());
+		this.encryptionDictionary.add(new DES_ECB_PKCS5Padding());
+		this.encryptionDictionary.add(new DESede_CBC_ISO10126Padding());
 		this.encryptionDictionary.add(new RC4());
-		// this.encryptionDictionary.add(new RC5());
+		//this.encryptionDictionary.add(new RC5_CFB_PKCS5Padding());
 	}
 
 }

@@ -15,22 +15,6 @@ public class RC4 extends AbstractSymmetricEncryption {
 	}
 
 	@Override
-	public byte[] createEncryption() throws GeneralSecurityException {
-		byte[] bytes = null;
-		// création d'une clé RC4
-		KeyGenerator kg = KeyGenerator.getInstance("RC4");
-		kg.init(128);
-		SecretKey key = kg.generateKey();
-		// chiffrage
-		this.chiffreur.init(Cipher.ENCRYPT_MODE, key);
-		bytes = chiffreur.doFinal(input);
-		// déchiffrage
-		this.dechiffreur.init(Cipher.DECRYPT_MODE, key);
-		bytes = dechiffreur.doFinal(bytes);
-		return bytes;
-	}
-
-	@Override
 	public String name() {
 		return name;
 	}
